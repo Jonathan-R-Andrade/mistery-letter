@@ -15,3 +15,12 @@
 
   --Verdana: 'Verdana';
 }
+
+.magazine2 {
+  background-image: url('images/pink-pattern.png');
+  color: fuchsia;
+  font-family: var(--Verdana);
+  font-weight: 900;
+
+  --Verdana: 'Verdana';
+}
