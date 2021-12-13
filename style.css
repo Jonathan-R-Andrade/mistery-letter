@@ -1,7 +1,17 @@
 .newspaper {
-
-  --Times-New-Roman: 'Times New Roman';
   background-color: antiquewhite;
   font-family: var(--Times-New-Roman);
   font-weight: 700;
+
+  --Times-New-Roman: 'Times New Roman';
+}
+
+.magazine1 {
+  background-color: teal;
+  color: white;
+  font-family: var(--Verdana);
+  font-weight: 900;
+  text-transform: uppercase;
+
+  --Verdana: 'Verdana';
 }
