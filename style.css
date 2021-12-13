@@ -1,0 +1,7 @@
+.newspaper {
+
+  --Times-New-Roman: 'Times New Roman';
+  background-color: antiquewhite;
+  font-family: var(--Times-New-Roman);
+  font-weight: 700;
+}
