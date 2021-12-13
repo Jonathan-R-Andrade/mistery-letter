@@ -16,25 +16,36 @@ function separarTextoEmPalavras(texto) {
   return palavras;
 }
 
+// Verifica se o array com as palavras está correto
+function verificarPalavras(palavras) {
+  if (palavras.length === 0) {
+    pCartaGerada.innerHTML = 'Por favor, digite o conteúdo da carta.';
+    return false;
+  }
+  return true;
+}
+
+// Preencher o parágrafo com palavras dentro de spans e espaços antes dos spans
+function preencherParagrafo(paragrafo, palavras) {
+  // Adiciona as palavras em um span e depois no parágrafo
+  for (let i = 0; i < palavras.length; i += 1) {
+    const span = document.createElement('span');
+    span.innerText = palavras[i];
+    // A partir da segunda palavra coloca um espaço em branco antes da mesma
+    if (i > 0) {
+      paragrafo.append(' ');
+    }
+    paragrafo.appendChild(span);
+  }
+}
+
 // Adiciona palavras do texto do input no parágrafo
 function adicionarPalavrasParagrafo() {
-  // Separa texto em palavras
+  // Separa texto do input em palavras
   const palavras = separarTextoEmPalavras(inputCartaTexto.value);
-  // Adiciona as palavras em um span e depois no parágrafo
-  const palavrasTotais = palavras.length;
-  if (palavrasTotais > 0) {
+  if (verificarPalavras(palavras)) {
     pCartaGerada.innerHTML = ''; // Apaga o conteúdo do parágrafo
-    // Adiciona a primeira palavra sem espaço antes da palavra
-    let span = document.createElement('span');
-    span.innerText = [palavras[0]];
-    pCartaGerada.appendChild(span);
-    // Adiciona as demais palavras com espaço antes da palavra
-    for (let i = 1; i < palavrasTotais; i += 1) {
-      span = document.createElement('span');
-      span.innerText = palavras[i];
-      pCartaGerada.append(' ');
-      pCartaGerada.appendChild(span);
-    }
+    preencherParagrafo(pCartaGerada, palavras);
   }
 }
 
