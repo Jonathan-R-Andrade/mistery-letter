@@ -55,3 +55,9 @@
 .skewright {
   transform: skewX(-10deg);
 }
+
+#carta-gerada span {
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+}

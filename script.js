@@ -71,15 +71,32 @@ function verificarPalavras(palavras) {
   return true;
 }
 
+// Troca o conjunto de classes de uma palavra alterando seu estilo
+function alterarEstilo(event) {
+  const palavra = event.target;
+  const estiloAnterior = palavra.classList;
+  const estiloAnteriorString = estiloAnterior.toString();
+  // Obtem as classes aleatórias
+  let novoEstilo = obterClassesAleatorias(4);
+  let novoEstiloString = novoEstilo.toString().replace(/,/g, ' ');
+  // Enquanto o novo estilo for igual ao estilo anterior tentar de novo
+  while (novoEstiloString === estiloAnteriorString) {
+    novoEstilo = obterClassesAleatorias(4);
+    novoEstiloString = novoEstilo.toString().replace(/,/g, ' ');
+  }
+  palavra.className = novoEstiloString;
+}
+
 // Preencher o parágrafo com palavras dentro de spans e espaços antes dos spans
 function preencherParagrafo(paragrafo, palavras) {
   // Adiciona as palavras em um span e depois no parágrafo
   for (let i = 0; i < palavras.length; i += 1) {
     const span = document.createElement('span');
     span.innerText = palavras[i];
-    span.style.display = 'inline-block';
+    // Adiciona ouvinte de click que permite alterar o estilo
+    span.addEventListener('click', alterarEstilo);
     // Obtem as classes aleatórias e adiciona no span
-    const classesAleatorias = obterClassesAleatorias(2);
+    const classesAleatorias = obterClassesAleatorias(4);
     for (let j = 0; j < classesAleatorias.length; j += 1) {
       span.classList.add(classesAleatorias[j]);
     }
