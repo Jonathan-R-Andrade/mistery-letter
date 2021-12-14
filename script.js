@@ -3,6 +3,52 @@ let btnCriarCarta;
 let inputCartaTexto;
 let pCartaGerada;
 
+// Classes para estilizar as palavras
+const classes = [
+  ['newspaper', 'magazine1', 'magazine2'], // Grupo estilo
+  ['medium', 'big', 'reallybig'], // Grupo tamanho
+  ['rotateleft', 'rotateright'], // Grupo rotação
+  ['skewleft', 'skewright'], // Grupo inclinação
+];
+
+// Gera números aleatórios de 0 a n sem repetilos
+function gerarNumeros(quantidade, n) {
+  const numerosGerados = [];
+  for (let i = 0; i < quantidade; i += 1) {
+    // Gera um número aleatório até n
+    let numeroAleatorio = Math.round(Math.random() * n);
+    // Enquanto o número repetir tentar de novo
+    while (numerosGerados.indexOf(numeroAleatorio) > -1) {
+      numeroAleatorio = Math.round(Math.random() * n);
+    }
+    // Armazena o novo número gerado
+    numerosGerados.push(numeroAleatorio);
+  }
+  return numerosGerados;
+}
+
+// Pega classes aleatórias do array classes
+function obterClassesAleatorias(minimoGrupo) {
+  const totalGrupos = classes.length;
+  if (minimoGrupo <= 0 || minimoGrupo > totalGrupos) {
+    return '';
+  }
+  const classesSorteadas = [];
+  // Calcula o total de grupos que serão usados
+  const totalGruposUsar = Math.round(Math.random() * (totalGrupos - minimoGrupo)) + minimoGrupo;
+  // Obtem os índices dos grupo
+  const indicesGrupos = gerarNumeros(totalGruposUsar, totalGrupos - 1);
+  // Percorre os grupos
+  for (let i = 0; i < totalGruposUsar; i += 1) {
+    const totalClasses = classes[indicesGrupos[i]].length;
+    // Obtem o índice da classe
+    const indiceClasse = gerarNumeros(1, totalClasses - 1);
+    // Percorre as classes
+    classesSorteadas.push(classes[indicesGrupos[i]][indiceClasse[0]]);
+  }
+  return classesSorteadas;
+}
+
 // Separa texto em palavras
 function separarTextoEmPalavras(texto) {
   // Pega palavras separadas por um 1 espaço em branco
@@ -31,6 +77,12 @@ function preencherParagrafo(paragrafo, palavras) {
   for (let i = 0; i < palavras.length; i += 1) {
     const span = document.createElement('span');
     span.innerText = palavras[i];
+    span.style.display = 'inline-block';
+    // Obtem as classes aleatórias e adiciona no span
+    const classesAleatorias = obterClassesAleatorias(2);
+    for (let j = 0; j < classesAleatorias.length; j += 1) {
+      span.classList.add(classesAleatorias[j]);
+    }
     // A partir da segunda palavra coloca um espaço em branco antes da mesma
     if (i > 0) {
       paragrafo.append(' ');
