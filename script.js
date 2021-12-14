@@ -2,6 +2,7 @@
 let btnCriarCarta;
 let inputCartaTexto;
 let pCartaGerada;
+let pCartaContador;
 
 // Classes para estilizar as palavras
 const classes = [
@@ -106,6 +107,7 @@ function preencherParagrafo(paragrafo, palavras) {
     }
     paragrafo.appendChild(span);
   }
+  pCartaContador.innerText = palavras.length;
 }
 
 // Adiciona palavras do texto do input no parágrafo
@@ -130,6 +132,7 @@ function obterElementos() {
   btnCriarCarta = document.getElementById('criar-carta');
   inputCartaTexto = document.getElementById('carta-texto');
   pCartaGerada = document.getElementById('carta-gerada');
+  pCartaContador = document.getElementById('carta-contador');
 }
 
 // Adicionar ouvintes aos elementos
