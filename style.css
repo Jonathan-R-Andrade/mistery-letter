@@ -1,3 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(40, 40, 40);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
 .newspaper {
   background-color: antiquewhite;
   font-family: var(--Times-New-Roman);
@@ -56,8 +68,142 @@
   transform: skewX(-10deg);
 }
 
+#carta-texto-conteiner {
+  width: max-content;
+  height: max-content;
+  margin: 10px auto;
+  padding: 5px 5px 0;
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 10px;
+}
+
+#carta-texto-conteiner:hover {
+  background-color: rgb(60, 60, 60);
+  box-shadow: 0 0 3px 1px rgb(80, 80, 80);
+}
+
+#carta-texto {
+  width: 200px;
+  height: 20px;
+  margin-right: 7px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+#criar-carta {
+  background-image: url('icon/carta.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+#carta-contador-conteiner {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#carta-contador-conteiner * {
+  display: inline-block;
+}
+
+#carta-gerada {
+  width: 80%;
+  margin: 0 auto 10px;
+  padding: 20px;
+  background-color: rgb(230, 180, 120);
+  border-radius: 20px;
+}
+
 #carta-gerada span {
   display: inline-block;
   user-select: none;
   cursor: pointer;
+  margin: 2px;
+}
+
+/* Envelope */
+#envelope {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: yellow;
+  margin: 200px 10px 10px;
+  width: var(--envelope-largura);
+  height: var(--envelope-altura);
+
+  --envelope-largura: 170px;
+
+  --envelope-altura: 100px;
+}
+
+#envelope:before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: calc(var(--envelope-altura) * 0.75) solid rgb(200, 200, 0);
+  border-left: calc(var(--envelope-largura) / 2) solid transparent;
+  border-right: calc(var(--envelope-largura) / 2) solid transparent;
+  transform: rotateX(0);
+  transform-origin: top;
+  transition: z-index 0s 500ms linear,
+    transform 500ms 500ms linear,
+    border-top-color 0s 750ms linear;
+}
+
+#envelope:hover:before {
+  z-index: 0;
+  border-top-color: white;
+  transform: rotateX(180deg);
+  transform-origin: top;
+  transition: z-index 0s 500ms linear,
+    transform 500ms linear,
+    border-top-color 0s 250ms linear;
+}
+
+#envelope:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 0, 0.4);
+}
+
+#carta {
+  position: relative;
+  z-index: 0;
+  bottom: 0;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: calc(var(--envelope-largura) / 3);
+  background-color: rgb(230, 180, 120);
+  transition: transform 500ms linear;
+}
+
+#envelope:hover #carta {
+  transition: transform 500ms 500ms linear;
+  transform: translateY(-60%);
+  z-index: 1;
+}
+
+#texto:hover {
+  transform: perspective(0);
+  color: aqua;
 }
