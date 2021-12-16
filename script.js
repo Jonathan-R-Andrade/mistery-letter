@@ -130,6 +130,7 @@ function adicionarPalavrasParagrafo() {
   if (verificarPalavras(palavras)) {
     pCartaGerada.innerHTML = ''; // Apaga o conteúdo do parágrafo
     preencherParagrafo(pCartaGerada, palavras);
+    btnMistery.classList.remove('esconder-mistery');
   }
 }
 
@@ -173,9 +174,11 @@ function estilizarAutomaticamente() {
 // Ativa ou desativa a opção misteriosa
 function opcaoMisteriosaOnOff() {
   if (opcaoMisteriosa) {
+    spanTexto.classList.remove('texto-clicado');
     opcaoMisteriosa = false;
     clearInterval(idSetInterval);
   } else {
+    spanTexto.classList.add('texto-clicado');
     opcaoMisteriosa = true;
     estilizarAutomaticamente();
     idSetInterval = setInterval(estilizarAutomaticamente, 1000);

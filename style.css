@@ -24,6 +24,11 @@ body {
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
+  transition: transform 1s linear;
+}
+
+.esconder-mistery {
+  transform: translateY(-150%);
 }
 
 #mistery:hover {
@@ -162,11 +167,11 @@ body {
   border-radius: 20px;
   color: black;
   text-align: justify;
+  user-select: none;
 }
 
 #carta-gerada span {
   display: inline-block;
-  user-select: none;
   cursor: pointer;
   margin: 2px;
 }
@@ -250,10 +255,9 @@ body {
 #texto {
   display: inline-block;
   user-select: none;
-  transition: transform 500ms;
+  cursor: pointer;
 }
 
-#texto:hover {
-  cursor: pointer;
+.texto-clicado {
   color: aqua;
 }
