@@ -6,6 +6,7 @@ let pCartaGerada;
 let pCartaContador;
 let divEnvelope;
 let spanTexto;
+let btnLimparCampo;
 
 // Classes para estilizar as palavras
 const classes = [
@@ -159,6 +160,7 @@ function obterElementos() {
   btnMistery = document.getElementById('mistery');
   divEnvelope = document.getElementById('envelope');
   spanTexto = document.getElementById('texto');
+  btnLimparCampo = document.getElementById('limpar-campo');
 }
 
 // Estiliza as palavras automaticamente
@@ -169,6 +171,11 @@ function estilizarAutomaticamente() {
     const palavra = { target: palavras[i] };
     alterarEstilo(palavra);
   }
+}
+
+// Limpa o texto do input
+function limparInput() {
+  inputCartaTexto.value = '';
 }
 
 // Ativa ou desativa a opção misteriosa
@@ -191,6 +198,7 @@ function adicionarOuvinte() {
   inputCartaTexto.addEventListener('keypress', adicionarPalavrasParagrafoEnter);
   btnMistery.addEventListener('click', escoderMostrarEnvelope);
   spanTexto.addEventListener('click', opcaoMisteriosaOnOff);
+  btnLimparCampo.addEventListener('click', limparInput);
 }
 
 // Executar após o carregamento da página
