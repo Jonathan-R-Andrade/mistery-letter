@@ -10,6 +10,27 @@ body {
   color: white;
 }
 
+#mistery {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 5px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#mistery:hover {
+  background-color: rgb(60, 60, 60);
+  box-shadow: 0 0 3px 1px rgb(80, 80, 80);
+}
+
 .newspaper {
   background-color: antiquewhite;
   font-family: var(--Times-New-Roman);
@@ -68,6 +89,22 @@ body {
   transform: skewX(-10deg);
 }
 
+.rotateleft.skewleft {
+  transform: rotate(-5deg) skewX(10deg);
+}
+
+.rotateleft.skewright {
+  transform: rotate(-5deg) skewX(-10deg);
+}
+
+.rotateright.skewleft {
+  transform: rotate(5deg) skewX(10deg);
+}
+
+.rotateright.skewright {
+  transform: rotate(5deg) skewX(-10deg);
+}
+
 #carta-texto-conteiner {
   width: max-content;
   height: max-content;
@@ -123,6 +160,8 @@ body {
   padding: 20px;
   background-color: rgb(230, 180, 120);
   border-radius: 20px;
+  color: black;
+  text-align: justify;
 }
 
 #carta-gerada span {
@@ -132,19 +171,24 @@ body {
   margin: 2px;
 }
 
-/* Envelope */
+/* Envelope/Carta */
 #envelope {
   position: fixed;
   left: 0;
   bottom: 0;
   background-color: yellow;
-  margin: 200px 10px 10px;
+  margin: 10px;
   width: var(--envelope-largura);
   height: var(--envelope-altura);
+  transition: transform 500ms linear;
 
   --envelope-largura: 170px;
 
   --envelope-altura: 100px;
+}
+
+.esconder-envelope {
+  transform: translateX(-150%);
 }
 
 #envelope:before {
@@ -203,7 +247,13 @@ body {
   z-index: 1;
 }
 
+#texto {
+  display: inline-block;
+  user-select: none;
+  transition: transform 500ms;
+}
+
 #texto:hover {
-  transform: perspective(0);
+  cursor: pointer;
   color: aqua;
 }

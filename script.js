@@ -1,8 +1,11 @@
 // Declarando elementos
+let btnMistery;
 let btnCriarCarta;
 let inputCartaTexto;
 let pCartaGerada;
 let pCartaContador;
+let divEnvelope;
+let spanTexto;
 
 // Classes para estilizar as palavras
 const classes = [
@@ -11,6 +14,15 @@ const classes = [
   ['rotateleft', 'rotateright'], // Grupo rotação
   ['skewleft', 'skewright'], // Grupo inclinação
 ];
+
+// Classe do CSS
+const CC_ESCONDER_ENVELOPE = 'esconder-envelope';
+
+// Flag opção misteriosa
+let opcaoMisteriosa = false;
+
+// Recebe o ID retornado por setInterval()
+let idSetInterval;
 
 // Gera números aleatórios de 0 a n sem repetilos
 function gerarNumeros(quantidade, n) {
@@ -32,7 +44,7 @@ function gerarNumeros(quantidade, n) {
 function obterClassesAleatorias(minimoGrupo) {
   const totalGrupos = classes.length;
   if (minimoGrupo <= 0 || minimoGrupo > totalGrupos) {
-    return '';
+    return [];
   }
   const classesSorteadas = [];
   // Calcula o total de grupos que serão usados
@@ -67,6 +79,7 @@ function separarTextoEmPalavras(texto) {
 function verificarPalavras(palavras) {
   if (palavras.length === 0) {
     pCartaGerada.innerHTML = 'Por favor, digite o conteúdo da carta.';
+    pCartaContador.innerText = '0';
     return false;
   }
   return true;
@@ -127,18 +140,54 @@ function adicionarPalavrasParagrafoEnter(event) {
   }
 }
 
+// Esconde ou mostra o envelope
+function escoderMostrarEnvelope() {
+  if (divEnvelope.classList.contains(CC_ESCONDER_ENVELOPE)) {
+    divEnvelope.classList.remove(CC_ESCONDER_ENVELOPE);
+  } else {
+    divEnvelope.classList.add(CC_ESCONDER_ENVELOPE);
+  }
+}
+
 // Obter elementos da página
 function obterElementos() {
   btnCriarCarta = document.getElementById('criar-carta');
   inputCartaTexto = document.getElementById('carta-texto');
   pCartaGerada = document.getElementById('carta-gerada');
   pCartaContador = document.getElementById('carta-contador');
+  btnMistery = document.getElementById('mistery');
+  divEnvelope = document.getElementById('envelope');
+  spanTexto = document.getElementById('texto');
+}
+
+// Estiliza as palavras automaticamente
+function estilizarAutomaticamente() {
+  const palavras = document.querySelectorAll('#carta-gerada span');
+  for (let i = 0; i < palavras.length; i += 1) {
+    // Adiciona uma propriedade target para a função que recebe evento e estiliza as palavras
+    const palavra = { target: palavras[i] };
+    alterarEstilo(palavra);
+  }
+}
+
+// Ativa ou desativa a opção misteriosa
+function opcaoMisteriosaOnOff() {
+  if (opcaoMisteriosa) {
+    opcaoMisteriosa = false;
+    clearInterval(idSetInterval);
+  } else {
+    opcaoMisteriosa = true;
+    estilizarAutomaticamente();
+    idSetInterval = setInterval(estilizarAutomaticamente, 1000);
+  }
 }
 
 // Adicionar ouvintes aos elementos
 function adicionarOuvinte() {
   btnCriarCarta.addEventListener('click', adicionarPalavrasParagrafo);
   inputCartaTexto.addEventListener('keypress', adicionarPalavrasParagrafoEnter);
+  btnMistery.addEventListener('click', escoderMostrarEnvelope);
+  spanTexto.addEventListener('click', opcaoMisteriosaOnOff);
 }
 
 // Executar após o carregamento da página
