@@ -55,7 +55,7 @@ body {
 }
 
 .magazine2 {
-  background-image: url('images/pink-pattern.png');
+  background-image: url('../img/pink-pattern.png');
   color: fuchsia;
   font-family: var(--Verdana);
   font-weight: 900;
@@ -169,7 +169,7 @@ body {
 }
 
 #criar-carta {
-  background-image: url('icon/carta.png');
+  background-image: url('../img/icon/carta.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
