@@ -209,6 +209,7 @@ body {
 
 #carta-contador-conteiner {
   width: 80%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -218,6 +219,7 @@ body {
 
 #carta-gerada {
   width: 80%;
+  max-width: 900px;
   margin: 0 auto 10px;
   padding: 20px;
   background-color: rgb(230, 180, 120);
