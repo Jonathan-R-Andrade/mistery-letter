@@ -14,8 +14,8 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  margin: 5px;
-  padding: 5px;
+  margin: 15px 10px;
+  padding: 8px;
   width: 30px;
   height: 30px;
   font-size: 20px;
@@ -25,10 +25,17 @@ body {
   background-color: transparent;
   cursor: pointer;
   transition: transform 1s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mistery:focus {
+  outline: 2px solid rgb(230, 180, 120);
 }
 
 .esconder-mistery {
-  transform: translateY(-150%);
+  transform: translateY(-200%);
 }
 
 #mistery:hover {
@@ -111,47 +118,50 @@ body {
 }
 
 #carta-texto-conteiner {
-  width: max-content;
-  height: max-content;
-  margin: 10px auto;
-  padding: 5px 5px 0;
-  background-color: transparent;
-  border: 1px white solid;
-  border-radius: 10px;
-  word-spacing: -100px;
+  padding: 0 45px;
+  margin: 10px 0;
 }
 
-#carta-texto-conteiner:hover {
+#carta-texto-label {
+  max-width: 400px;
+  min-width: 100px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px white solid;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#carta-texto-label:hover , #carta-texto-label:focus-within {
   background-color: rgb(60, 60, 60);
   box-shadow: 0 0 3px 1px rgb(80, 80, 80);
 }
 
 #carta-texto {
-  width: 300px;
-  height: 20px;
-  margin-right: 3px;
+  width: 100%;
   background-color: transparent;
   outline: none;
   border: none;
-  float: left;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   color: white;
+  margin-right: 5px;
+  padding: 3px;
 }
 
 #limpar-campo {
   position: relative;
-  display: inline-block;
-  width: 20px;
-  margin-right: 10px;
-  padding: 0 5px;
-  text-align: center;
-  line-height: 15px;
-  font-size: 30px;
+  line-height: 22px;
+  font-size: 40px;
   color: red;
   user-select: none;
   cursor: pointer;
-  border-right: 1px solid white;
+  border: none;
+  background-color: transparent;
+  margin-right: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 3px;
 }
 
 #limpar-campo:hover:before {
@@ -162,28 +172,44 @@ body {
   font-size: 15px;
   color: white;
   background-color: rgb(20, 20, 20);
-  left: 0;
-  bottom: -35px;
+  left: -14px;
+  bottom: -42px;
   border: 1px solid white;
   z-index: 0;
 }
 
+#limpar-campo:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 34px;
+  width: 1px;
+  height: 28px;
+  background-color: white;
+}
+
 #criar-carta {
-  background-image: url('../img/icon/carta.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  line-height: 0;
+  user-select: none;
+  padding: 3px;
+}
+
+#limpar-campo:focus , #criar-carta:focus , #carta-texto:focus {
+  border-radius: 5px;
+  outline: 2px solid rgb(230, 180, 120);
+}
+
+#criar-carta img {
   width: 22px;
   height: 22px;
-  margin-left: 5px;
-  cursor: pointer;
-  user-select: none;
 }
 
 #carta-contador-conteiner {
   width: 80%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -193,6 +219,7 @@ body {
 
 #carta-gerada {
   width: 80%;
+  max-width: 900px;
   margin: 0 auto 10px;
   padding: 20px;
   background-color: rgb(230, 180, 120);

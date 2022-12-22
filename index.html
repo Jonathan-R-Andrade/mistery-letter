@@ -3,6 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicação para gerar carta. A carta gerada possuí palavras que parecem que foram recortadas de revistas e jornais.">
   <title>Mistery Letter</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/script.js"></script>
@@ -10,12 +13,16 @@
 
 <body>
 
-  <button id="mistery" class="esconder-mistery">?</button>
+  <button id="mistery" class="esconder-mistery" tabindex="-1">?</button>
 
   <div id="carta-texto-conteiner">
-    <input id="carta-texto" type="text" />
-    <span id="limpar-campo">&#215</span>
-    <button id="criar-carta"></button>
+    <label for="carta-texto" id="carta-texto-label">
+      <input id="carta-texto" type="text" />
+      <button id="limpar-campo">&#215</button>
+      <button id="criar-carta">
+        <img src="img/icon/carta.png" alt="Ícone de um envelope com uma carta dentro">
+      </button>
+    </label>
   </div>
 
   <div id="carta-contador-conteiner">
@@ -23,8 +30,8 @@
     <p id="carta-contador">0</p>
   </div>
 
-  <p id="carta-gerada"></p> 
-  
+  <p id="carta-gerada"></p>
+
   <div id="envelope" class="esconder-envelope">
     <div id="carta"><span id="texto">?</span></div>
   </div>

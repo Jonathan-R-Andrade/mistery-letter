@@ -132,6 +132,7 @@ function adicionarPalavrasParagrafo() {
     pCartaGerada.innerHTML = ''; // Apaga o conteúdo do parágrafo
     preencherParagrafo(pCartaGerada, palavras);
     btnMistery.classList.remove('esconder-mistery');
+    btnMistery.setAttribute('tabindex', '0');
   }
 }
 
