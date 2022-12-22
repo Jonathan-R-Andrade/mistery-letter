@@ -182,16 +182,15 @@ body {
 }
 
 #criar-carta {
-  background-image: url('../img/icon/carta.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   background-color: transparent;
   border: none;
   cursor: pointer;
   line-height: 0;
   user-select: none;
   padding: 3px;
+}
+
+#criar-carta img {
   width: 22px;
   height: 22px;
 }
