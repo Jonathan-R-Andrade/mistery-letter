@@ -133,7 +133,7 @@ body {
   align-items: center;
 }
 
-#carta-texto-label:hover {
+#carta-texto-label:hover , #carta-texto-label:focus-within {
   background-color: rgb(60, 60, 60);
   box-shadow: 0 0 3px 1px rgb(80, 80, 80);
 }
