@@ -30,6 +30,10 @@ body {
   justify-content: center;
 }
 
+#mistery:focus {
+  outline: 2px solid rgb(230, 180, 120);
+}
+
 .esconder-mistery {
   transform: translateY(-200%);
 }
@@ -191,6 +195,11 @@ body {
   line-height: 0;
   user-select: none;
   padding: 3px;
+}
+
+#limpar-campo:focus , #criar-carta:focus , #carta-texto:focus {
+  border-radius: 5px;
+  outline: 2px solid rgb(230, 180, 120);
 }
 
 #criar-carta img {
